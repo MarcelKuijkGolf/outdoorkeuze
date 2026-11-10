@@ -1,0 +1,32 @@
+name: Campings bijwerken
+
+on:
+  schedule:
+    # Elke eerste dag van de maand om 04:00 UTC
+    - cron: "0 4 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  bijwerken:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Code ophalen
+        uses: actions/checkout@v4
+
+      - name: Campings ophalen uit OpenStreetMap
+        run: python3 scripts/haal_campings_op.py
+
+      - name: Wijzigingen opslaan
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/campings-osm.json
+          if git diff --cached --quiet; then
+            echo "Geen wijzigingen."
+          else
+            git commit -m "Campings bijgewerkt uit OpenStreetMap"
+            git push
+          fi

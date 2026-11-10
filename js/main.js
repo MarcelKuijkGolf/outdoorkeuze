@@ -178,7 +178,7 @@
     return '' +
       '<article class="plek-kaart" data-plek="' + esc(p.id) + '" tabindex="0">' +
         '<h3>' + esc(p.naam) + '</h3>' +
-        '<p class="merk">' + esc(p.plaats) + ' · ' + esc(p.provincie) + '</p>' +
+        '<p class="merk">' + esc([p.plaats, p.provincie].filter(Boolean).join(' · ')) + '</p>' +
         '<p class="prijs">' + esc(prijsPerNachtTekst(p)) + '</p>' +
         '<ul class="eigenschappen">' + lijstHTML(p.voorzieningen) + '</ul>' +
         '<a class="knop knop-klein" href="' + esc(p.website) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk de camping</a>' +
@@ -361,7 +361,8 @@
     teken();
   }
 
-  function initKampeerplekken(plekken) {
+  function initKampeerplekken(kuratiePlekken, osmPlekken) {
+    var plekken = kuratiePlekken.concat(osmPlekken || []);
     if (!window.L) {
       throw new Error('Kaartbibliotheek niet geladen');
     }
@@ -409,18 +410,27 @@
         if (typeof p.lat !== 'number' || typeof p.lng !== 'number') {
           return;
         }
-        var marker = L.marker([p.lat, p.lng]).bindPopup(
+        var marker = L.circleMarker([p.lat, p.lng], {
+          radius: 7,
+          weight: 2,
+          color: '#1e3b2a',
+          fillColor: '#4f9a62',
+          fillOpacity: 0.9
+        }).bindPopup(
           '<strong>' + esc(p.naam) + '</strong><br>' + esc(prijsPerNachtTekst(p))
         );
         marker.addTo(markerLaag);
         markers[p.id] = marker;
       });
 
-      lijst.innerHTML = resultaat.length
-        ? resultaat.map(plekKaartHTML).join('')
+      var zichtbaar = resultaat.slice(0, 60);
+
+      lijst.innerHTML = zichtbaar.length
+        ? zichtbaar.map(plekKaartHTML).join('')
         : '<p>Geen plekken gevonden met deze filters.</p>';
 
-      teller.textContent = resultaat.length + ' van ' + plekken.length + ' plekken getoond';
+      teller.textContent = resultaat.length + ' van ' + plekken.length + ' plekken getoond' +
+        (resultaat.length > 60 ? '. Er staan er 60 in de lijst; verfijn je zoekopdracht om meer te zien.' : '.');
 
       lijst.querySelectorAll('[data-plek]').forEach(function (kaartEl) {
         function toonOpKaart() {
@@ -498,7 +508,14 @@
     } else if (pagina === 'artikelen') {
       laden = laadJson('data/artikelen.json').then(initArtikelen);
     } else if (pagina === 'kampeerplekken') {
-      laden = laadJson('data/kampeerplekken.json').then(initKampeerplekken);
+      laden = Promise.all([
+        laadJson('data/kampeerplekken.json'),
+        laadJson('data/campings-osm.json').then(function (osm) {
+          return osm.campings || [];
+        }).catch(function () { return []; })
+      ]).then(function (resultaat) {
+        initKampeerplekken(resultaat[0], resultaat[1]);
+      });
     }
 
     if (laden) {
