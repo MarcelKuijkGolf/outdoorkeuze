@@ -493,7 +493,12 @@
         ? zichtbaar.map(plekKaartHTML).join('')
         : '<p>Geen plekken gevonden met deze filters.</p>';
 
-      teller.textContent = resultaat.length + ' van ' + plekken.length + ' plekken getoond' +
+      var opKaart = resultaat.filter(function (p) {
+        return typeof p.lat === 'number' && typeof p.lng === 'number';
+      }).length;
+      teller.textContent = resultaat.length + ' van ' + plekken.length + ' campings in de lijst' +
+        ' · ' + opKaart + ' op de kaart' +
+        (opKaart < resultaat.length ? ' (de rest heeft nog geen coördinaten)' : '') +
         (resultaat.length > 60 ? '. Er staan er 60 in de lijst; verfijn je zoekopdracht om meer te zien.' : '.');
 
       lijst.querySelectorAll('[data-plek]').forEach(function (kaartEl) {
