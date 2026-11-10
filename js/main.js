@@ -126,6 +126,7 @@
           '<button class="menu-knop" type="button" aria-expanded="false" aria-controls="hoofdmenu">Menu</button>' +
           '<nav id="hoofdmenu" class="hoofdmenu" aria-label="Hoofdmenu">' +
             '<a href="index.html">Home</a>' +
+            '<a href="kiezen.html">Help me kiezen</a>' +
             '<a href="vergelijkingen.html?categorie=kamperen">Kamperen</a>' +
             '<a href="kampeerplekken.html">Kampeerplekken</a>' +
             '<a href="vergelijkingen.html?categorie=wandelen">Wandelen</a>' +
@@ -417,7 +418,107 @@
     teken();
   }
 
-  var PITCHUP_NL = 'https://www.pitchup.com/en-us/campsites/netherlands/-/english/';
+  var KIEZER_LABELS = {
+    schoenen: 'wandelschoenen',
+    rugzak: 'een rugzak',
+    tent: 'een tent',
+    slaapzak: 'een slaapzak',
+    slaapmat: 'een slaapmat',
+    kleding: 'kleding',
+    licht: 'licht',
+    koken: 'koken',
+    meubels: 'een stoel en meubels'
+  };
+
+  function kiezerProductHTML(p) {
+    var knop = '';
+    var affiliate = p.affiliate_status === 'actief' && /^https:\/\//.test(p.affiliate_url || '');
+    if (affiliate) {
+      knop = '<a class="knop" href="' + esc(p.affiliate_url) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij de winkel</a>';
+    } else {
+      knop = '<p class="kiezer-nog">Link volgt binnenkort</p>';
+    }
+    var prijs = (typeof p.prijs === 'number')
+      ? '€ ' + p.prijs.toFixed(2).replace('.', ',')
+      : 'Prijs volgt';
+    return '' +
+      '<article class="kiezer-product">' +
+        '<p class="merk">' + esc(p.merk || '') + '</p>' +
+        '<h4>' + esc(p.naam) + '</h4>' +
+        '<p class="prijs">' + esc(prijs) + '</p>' +
+        knop +
+      '</article>';
+  }
+
+  function initKiezen(artikelen, producten) {
+    var form = document.getElementById('kiezer');
+    var uit = document.getElementById('kiezer-resultaat');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var beginner = data.get('ervaring') !== 'gevorderd';
+      var activiteit = data.get('activiteit') || 'beide';
+      var nodig = data.getAll('nodig');
+      var toonAffiliate = false;
+      var html = '';
+
+      function zichtbaar(item) {
+        return item.gepubliceerd !== false;
+      }
+
+      if (nodig.length === 0) {
+        uit.innerHTML = '<p>Kies minstens één ding dat je nog nodig hebt, dan laat ik je zien wat erbij past.</p>';
+        return;
+      }
+
+      nodig.forEach(function (tag) {
+        var arts = artikelen.filter(function (a) {
+          return zichtbaar(a) && (a.tags || []).indexOf(tag) !== -1;
+        }).sort(function (a, b) {
+          // artikelen die bij de gekozen activiteit horen eerst
+          var aPast = (a.tags || []).indexOf(activiteit) !== -1 ? 0 : 1;
+          var bPast = (b.tags || []).indexOf(activiteit) !== -1 ? 0 : 1;
+          return aPast - bPast;
+        });
+        var niveaus = beginner ? ['instap'] : ['gevorderd', 'expert'];
+        var prods = producten.filter(function (p) {
+          return zichtbaar(p) && (p.tags || []).indexOf(tag) !== -1 && niveaus.indexOf(p.niveau) !== -1;
+        });
+
+        html += '<section class="kiezer-blok"><h3>Voor ' + esc(KIEZER_LABELS[tag] || tag) + '</h3>';
+
+        if (arts.length === 0 && prods.length === 0) {
+          html += '<p>Over ' + esc(KIEZER_LABELS[tag] || tag) + ' hebben we nog geen artikel of product. Dat komt eraan.</p>';
+        }
+
+        if (arts.length) {
+          html += '<ul class="kiezer-artikelen">' + arts.map(function (a) {
+            return '<li><a href="artikelen.html#' + esc(a.id) + '">' + esc(a.titel) + '</a></li>';
+          }).join('') + '</ul>';
+        }
+
+        if (prods.length) {
+          prods.forEach(function (p) {
+            if (p.affiliate_status === 'actief') {
+              toonAffiliate = true;
+            }
+          });
+          html += '<div class="kiezer-producten">' + prods.map(kiezerProductHTML).join('') + '</div>';
+        }
+
+        html += '</section>';
+      });
+
+      if (toonAffiliate) {
+        html += '<p class="kiezer-melding">Sommige links zijn affiliatelinks. Als je via zo’n link koopt, ontvangen wij een kleine vergoeding. Voor jou verandert de prijs niet.</p>';
+      }
+
+      uit.innerHTML = html;
+    });
+  }
+
+  var PITCHUP_NL ='https://www.pitchup.com/en-us/campsites/netherlands/-/english/';
 
   function initKampeerplekken(kuratiePlekken, osmPlekken) {
     var plekken = kuratiePlekken.concat(osmPlekken || []);
@@ -590,6 +691,10 @@
       laden = producten().then(initVergelijkingen);
     } else if (pagina === 'artikelen') {
       laden = artikelen().then(initArtikelen);
+    } else if (pagina === 'kiezen') {
+      laden = Promise.all([artikelen(), producten()]).then(function (resultaat) {
+        initKiezen(resultaat[0], resultaat[1]);
+      });
     } else if (pagina === 'kampeerplekken') {
       laden = Promise.all([
         laadData('kampeerplekken', '&order=naam', 'data/kampeerplekken.json', function (k) {

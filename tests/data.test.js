@@ -103,3 +103,16 @@ test('campings-osm: bronvermelding en structuur', () => {
     assert.ok(!kuratie.has(c.id), `${c.id}: id bestaat al in kampeerplekken.json`);
   }
 });
+
+test('tags: alleen bekende tags, zodat de kiezer ze kan vinden', () => {
+  const BEKEND = ['kamperen', 'wandelen', 'outdoor', 'uitrusting', 'beginner', 'tent', 'slaapzak', 'slaapmat',
+    'licht', 'rugzak', 'kleding', 'meubels', 'koken'];
+  for (const bestand of ['artikelen.json', 'producten.json']) {
+    for (const item of laad(bestand)) {
+      assert.ok(Array.isArray(item.tags), `${item.id}: tags moet een lijst zijn`);
+      for (const tag of item.tags) {
+        assert.ok(BEKEND.includes(tag), `${item.id}: onbekende tag ${tag}`);
+      }
+    }
+  }
+});

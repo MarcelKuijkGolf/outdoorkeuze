@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help me kiezen | OutdoorKeuze.nl</title>
+  <meta name="description" content="Beantwoord drie vragen en krijg artikelen en producten die passen bij wat je gaat doen.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="kiezen">
+
+<div id="site-header"></div>
+
+<main>
+
+  <section class="pagina-kop">
+    <h1>Help me kiezen</h1>
+    <p>Beantwoord drie korte vragen. Dan zie je welke artikelen en producten bij jouw situatie passen.</p>
+  </section>
+
+  <section class="sectie">
+    <form id="kiezer" class="kiezer">
+
+      <fieldset>
+        <legend>1. Wat ga je doen?</legend>
+        <label><input type="radio" name="activiteit" value="wandelen"> Wandelen</label>
+        <label><input type="radio" name="activiteit" value="kamperen"> Kamperen</label>
+        <label><input type="radio" name="activiteit" value="beide" checked> Allebei</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Is het je eerste keer?</legend>
+        <label><input type="radio" name="ervaring" value="beginner" checked> Ja, ik ben nieuw</label>
+        <label><input type="radio" name="ervaring" value="gevorderd"> Nee, ik heb al ervaring</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Wat heb je nog nodig? (meerdere keuzes mogelijk)</legend>
+        <label><input type="checkbox" name="nodig" value="schoenen"> Wandelschoenen</label>
+        <label><input type="checkbox" name="nodig" value="rugzak"> Rugzak</label>
+        <label><input type="checkbox" name="nodig" value="tent"> Tent</label>
+        <label><input type="checkbox" name="nodig" value="slaapzak"> Slaapzak</label>
+        <label><input type="checkbox" name="nodig" value="slaapmat"> Slaapmat</label>
+        <label><input type="checkbox" name="nodig" value="kleding"> Kleding</label>
+        <label><input type="checkbox" name="nodig" value="licht"> Licht</label>
+        <label><input type="checkbox" name="nodig" value="koken"> Koken</label>
+        <label><input type="checkbox" name="nodig" value="meubels"> Stoel en meubels</label>
+      </fieldset>
+
+      <button type="submit" class="knop">Toon mijn lijst</button>
+    </form>
+
+    <div id="kiezer-resultaat" class="kiezer-resultaat" aria-live="polite"></div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

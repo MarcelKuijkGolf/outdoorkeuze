@@ -20,7 +20,11 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "instap"
+    "niveau": "instap",
+    "tags": [
+      "kamperen",
+      "tent"
+    ]
   },
   {
     "id": "slaapzak-voorbeeld",
@@ -43,7 +47,11 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "gevorderd"
+    "niveau": "gevorderd",
+    "tags": [
+      "kamperen",
+      "slaapzak"
+    ]
   },
   {
     "id": "slaapmat-voorbeeld",
@@ -66,7 +74,11 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "expert"
+    "niveau": "expert",
+    "tags": [
+      "kamperen",
+      "slaapmat"
+    ]
   },
   {
     "id": "kampeerstoel-voorbeeld",
@@ -89,7 +101,11 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "instap"
+    "niveau": "instap",
+    "tags": [
+      "kamperen",
+      "meubels"
+    ]
   },
   {
     "id": "rugzak-voorbeeld-50l",
@@ -112,7 +128,11 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "gevorderd"
+    "niveau": "gevorderd",
+    "tags": [
+      "wandelen",
+      "rugzak"
+    ]
   },
   {
     "id": "jas-voorbeeld",
@@ -135,7 +155,12 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "expert"
+    "niveau": "expert",
+    "tags": [
+      "wandelen",
+      "outdoor",
+      "kleding"
+    ]
   },
   {
     "id": "hoofdlamp-voorbeeld",
@@ -158,7 +183,12 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "instap"
+    "niveau": "instap",
+    "tags": [
+      "wandelen",
+      "kamperen",
+      "licht"
+    ]
   },
   {
     "id": "kooktoestel-voorbeeld",
@@ -181,6 +211,10 @@
     ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
     "affiliate_status": "placeholder",
-    "niveau": "gevorderd"
+    "niveau": "gevorderd",
+    "tags": [
+      "kamperen",
+      "koken"
+    ]
   }
 ]

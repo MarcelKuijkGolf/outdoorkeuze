@@ -975,3 +975,90 @@ h2::after {
     max-height: none;
   }
 }
+
+/* Help me kiezen */
+.kiezer {
+  display: grid;
+  gap: 1rem;
+  max-width: 720px;
+}
+.kiezer fieldset {
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  background: var(--wit);
+  padding: 0.9rem 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+.kiezer legend {
+  font-weight: 700;
+  color: var(--groen);
+  padding: 0 0.3rem;
+}
+.kiezer label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.kiezer input[type="radio"],
+.kiezer input[type="checkbox"] {
+  accent-color: var(--accent);
+  width: 1.05rem;
+  height: 1.05rem;
+}
+.kiezer-resultaat {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.2rem;
+}
+.kiezer-blok {
+  background: var(--wit);
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  padding: 1.1rem 1.3rem;
+  box-shadow: var(--schaduw);
+}
+.kiezer-blok h3 {
+  color: var(--groen);
+  margin-bottom: 0.6rem;
+}
+.kiezer-artikelen {
+  padding-left: 1.2rem;
+  margin-bottom: 0.8rem;
+}
+.kiezer-artikelen a {
+  color: var(--groen-2);
+  font-weight: 600;
+}
+.kiezer-producten {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.9rem;
+}
+.kiezer-product {
+  background: var(--beige);
+  border-radius: var(--radius);
+  padding: 0.9rem;
+  display: grid;
+  gap: 0.35rem;
+  align-content: start;
+}
+.kiezer-product h4 {
+  color: var(--groen);
+}
+.kiezer-product .merk {
+  font-size: 0.85rem;
+  color: var(--grijs);
+}
+.kiezer-product .prijs {
+  font-weight: 700;
+}
+.kiezer-nog {
+  font-size: 0.9rem;
+  color: var(--grijs);
+}
+.kiezer-melding {
+  font-size: 0.9rem;
+  color: var(--grijs);
+}
