@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kampeerplekken op de kaart | OutdoorKeuze.nl</title>
+  <meta name="description" content="Zoek kampeerplekken op de kaart, filter op naam, plaats en prijs per nacht.">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="kampeerplekken">
+
+<div id="site-header"></div>
+
+<main>
+
+  <section class="pagina-kop">
+    <h1>Kampeerplekken op de kaart</h1>
+    <p>Demonstratiegegevens: de plekken zijn voorbeelden. Prijzen per nacht volgen zodra er echte gegevens zijn.</p>
+  </section>
+
+  <section class="sectie">
+    <div class="kaart-filters">
+      <div class="filters">
+        <label for="plek-zoek" class="verborgen">Zoek op naam of plaats</label>
+        <input type="search" id="plek-zoek" placeholder="Zoek op naam, plaats of provincie, bijv. Veluwe">
+      </div>
+
+      <div class="prijs-filter">
+        <label for="prijs-max">Maximale prijs per nacht: <strong id="prijs-max-label">alle prijzen</strong></label>
+        <input type="range" id="prijs-max" min="0" max="100" step="5" value="100">
+        <label class="checkbox-label">
+          <input type="checkbox" id="toon-onbekend" checked>
+          Toon ook plekken zonder bekende prijs
+        </label>
+      </div>
+    </div>
+
+    <p id="plek-teller" class="kleine-tekst"></p>
+
+    <div class="kaart-layout">
+      <div id="kaart" class="kaart" role="region" aria-label="Kaart met kampeerplekken"></div>
+      <div id="plek-lijst" class="plek-lijst"></div>
+    </div>
+  </section>
+
+  <section class="sectie">
+    <div class="affiliate-melding">
+      <strong>Let op:</strong> de kaart gebruikt OpenStreetMap-gegevens. Links naar campings zijn nu placeholders. Als je een camping via een affiliatelink aanbeveelt, sta je daar bij de affiliateverklaring bij stil.
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

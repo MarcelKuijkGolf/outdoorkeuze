@@ -1,7 +1,7 @@
 /* ==========================================================
    OutdoorKeuze.nl - hoofdscript
-   Bouwt header, footer, productlijsten en artikelen op.
-   Gegevens komen uit de map /data (JSON).
+   Bouwt header, footer, productlijsten, artikelen en de
+   kampeerplekkenkaart op. Gegevens komen uit de map /data (JSON).
    ========================================================== */
 
 (function () {
@@ -12,6 +12,12 @@
     wandelen: 'Wandelen',
     outdoor: 'Outdoor',
     uitrusting: 'Uitrusting'
+  };
+
+  var NIVEAUS = {
+    instap: 'Instap',
+    gevorderd: 'Gevorderd',
+    expert: 'Expert'
   };
 
   var ICONEN = {
@@ -72,6 +78,7 @@
           '<nav id="hoofdmenu" class="hoofdmenu" aria-label="Hoofdmenu">' +
             '<a href="index.html">Home</a>' +
             '<a href="vergelijkingen.html?categorie=kamperen">Kamperen</a>' +
+            '<a href="kampeerplekken.html">Kampeerplekken</a>' +
             '<a href="vergelijkingen.html?categorie=wandelen">Wandelen</a>' +
             '<a href="vergelijkingen.html?categorie=outdoor">Outdoor</a>' +
             '<a href="vergelijkingen.html?categorie=uitrusting">Uitrusting</a>' +
@@ -98,6 +105,7 @@
               '<h4>Categorieën</h4>' +
               '<ul>' +
                 '<li><a href="vergelijkingen.html?categorie=kamperen">Kamperen</a></li>' +
+                '<li><a href="kampeerplekken.html">Kampeerplekken</a></li>' +
                 '<li><a href="vergelijkingen.html?categorie=wandelen">Wandelen</a></li>' +
                 '<li><a href="vergelijkingen.html?categorie=outdoor">Outdoor</a></li>' +
                 '<li><a href="vergelijkingen.html?categorie=uitrusting">Uitrusting</a></li>' +
@@ -140,11 +148,16 @@
       ? '<span class="placeholder-notitie">Placeholder-link</span>'
       : '';
 
+    var niveau = NIVEAUS[p.niveau]
+      ? '<span class="niveau-badge niveau-' + esc(p.niveau) + '">' + esc(NIVEAUS[p.niveau]) + '</span>'
+      : '';
+
     return '' +
       '<article class="product-kaart">' +
         '<span class="demo-label">Demo</span>' +
         '<div class="product-beeld" aria-hidden="true">' + (ICONEN[p.categorie] || '📦') + '</div>' +
         '<div class="product-inhoud">' +
+          niveau +
           '<p class="merk">' + esc(p.merk) + '</p>' +
           '<h3>' + esc(p.naam) + '</h3>' +
           '<p class="prijs">' + esc(prijs) + '</p>' +
@@ -159,6 +172,24 @@
           '<a class="knop" href="' + esc(p.affiliate_url) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk bij de winkel</a>' +
         '</div>' +
       '</article>';
+  }
+
+  function plekKaartHTML(p) {
+    return '' +
+      '<article class="plek-kaart" data-plek="' + esc(p.id) + '" tabindex="0">' +
+        '<span class="demo-label">Demo</span>' +
+        '<h3>' + esc(p.naam) + '</h3>' +
+        '<p class="merk">' + esc(p.plaats) + ' · ' + esc(p.provincie) + '</p>' +
+        '<p class="prijs">' + esc(prijsPerNachtTekst(p)) + '</p>' +
+        '<ul class="eigenschappen">' + lijstHTML(p.voorzieningen) + '</ul>' +
+        '<a class="knop knop-klein" href="' + esc(p.website) + '" target="_blank" rel="sponsored nofollow noopener">Bekijk de camping</a>' +
+      '</article>';
+  }
+
+  function prijsPerNachtTekst(p) {
+    return (typeof p.prijs_per_nacht === 'number')
+      ? '€ ' + p.prijs_per_nacht.toFixed(2).replace('.', ',') + ' per nacht'
+      : 'Prijs per nacht volgt';
   }
 
   function artikelKaartHTML(a, openen) {
@@ -188,12 +219,13 @@
 
   /* ---------- Filteren ---------- */
 
-  function filterProducten(producten, categorie, zoekterm) {
+  function filterProducten(producten, categorie, niveau, zoekterm) {
     var zoek = (zoekterm || '').trim().toLowerCase();
     return producten.filter(function (p) {
       var pastBij = !categorie || p.categorie === categorie;
+      var pastBijNiveau = !niveau || p.niveau === niveau;
       var tekst = [p.naam, p.merk, p.subcategorie].join(' ').toLowerCase();
-      return pastBij && (!zoek || tekst.indexOf(zoek) !== -1);
+      return pastBij && pastBijNiveau && (!zoek || tekst.indexOf(zoek) !== -1);
     });
   }
 
@@ -216,14 +248,18 @@
 
   function initVergelijkingen(producten) {
     var params = new URLSearchParams(window.location.search);
-    var ruw = params.get('categorie') || '';
-    var categorie = CATEGORIEN.hasOwnProperty(ruw) ? ruw : '';
+    var ruwCat = params.get('categorie') || '';
+    var ruwNiv = params.get('niveau') || '';
+
+    var categorie = CATEGORIEN.hasOwnProperty(ruwCat) ? ruwCat : '';
+    var niveau = NIVEAUS.hasOwnProperty(ruwNiv) ? ruwNiv : '';
 
     var titel = document.getElementById('paginatitel');
     var zoekInvoer = document.getElementById('filter-zoek');
     var lijst = document.getElementById('productlijst');
     var teller = document.getElementById('resultaat-teller');
-    var knoppen = document.querySelectorAll('.filter-knop');
+    var categorieKnoppen = document.querySelectorAll('[data-categorie]');
+    var niveauKnoppen = document.querySelectorAll('[data-niveau]');
 
     zoekInvoer.value = params.get('q') || '';
 
@@ -234,24 +270,38 @@
     }
 
     function teken() {
-      var resultaat = filterProducten(producten, categorie, zoekInvoer.value);
+      var resultaat = filterProducten(producten, categorie, niveau, zoekInvoer.value);
       lijst.innerHTML = resultaat.length
         ? resultaat.map(productKaartHTML).join('')
-        : '<p>Geen producten gevonden. Probeer een andere zoekterm.</p>';
+        : '<p>Geen producten gevonden. Probeer een andere combinatie of zoekterm.</p>';
       teller.textContent = resultaat.length + ' product(en) getoond';
     }
 
-    knoppen.forEach(function (knop) {
-      knop.classList.toggle('actief', knop.getAttribute('data-categorie') === categorie);
+    function activeerGroep(knoppen, attr, waarde, actief) {
+      knoppen.forEach(function (knop) {
+        knop.classList.toggle('actief', knop.getAttribute(attr) === waarde);
+      });
+    }
+
+    categorieKnoppen.forEach(function (knop) {
       knop.addEventListener('click', function () {
         categorie = knop.getAttribute('data-categorie');
-        knoppen.forEach(function (k) {
-          k.classList.toggle('actief', k === knop);
-        });
+        activeerGroep(categorieKnoppen, 'data-categorie', categorie);
         zetTitel();
         teken();
       });
     });
+
+    niveauKnoppen.forEach(function (knop) {
+      knop.addEventListener('click', function () {
+        niveau = knop.getAttribute('data-niveau');
+        activeerGroep(niveauKnoppen, 'data-niveau', niveau);
+        teken();
+      });
+    });
+
+    activeerGroep(categorieKnoppen, 'data-categorie', categorie);
+    activeerGroep(niveauKnoppen, 'data-niveau', niveau);
 
     zoekInvoer.addEventListener('input', teken);
 
@@ -312,6 +362,89 @@
     teken();
   }
 
+  function initKampeerplekken(plekken) {
+    if (!window.L) {
+      throw new Error('Kaartbibliotheek niet geladen');
+    }
+
+    var zoek = document.getElementById('plek-zoek');
+    var prijsSchuif = document.getElementById('prijs-max');
+    var prijsLabel = document.getElementById('prijs-max-label');
+    var toonOnbekend = document.getElementById('toon-onbekend');
+    var lijst = document.getElementById('plek-lijst');
+    var teller = document.getElementById('plek-teller');
+
+    // Nederland als startpunt
+    var kaart = L.map('kaart').setView([52.2, 5.3], 7);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap-bijdragers'
+    }).addTo(kaart);
+
+    var markerLaag = L.layerGroup().addTo(kaart);
+    var markers = {};
+
+    function passeert(p) {
+      var zoekterm = zoek.value.trim().toLowerCase();
+      var tekst = [p.naam, p.plaats, p.provincie].join(' ').toLowerCase();
+      if (zoekterm && tekst.indexOf(zoekterm) === -1) {
+        return false;
+      }
+      var max = Number(prijsSchuif.value);
+      if (typeof p.prijs_per_nacht === 'number') {
+        return max >= 100 || p.prijs_per_nacht <= max;
+      }
+      return toonOnbekend.checked;
+    }
+
+    function teken() {
+      var max = Number(prijsSchuif.value);
+      prijsLabel.textContent = max >= 100 ? 'alle prijzen' : '€ ' + max;
+
+      var resultaat = plekken.filter(passeert);
+
+      markerLaag.clearLayers();
+      markers = {};
+      resultaat.forEach(function (p) {
+        var marker = L.marker([p.lat, p.lng]).bindPopup(
+          '<strong>' + esc(p.naam) + '</strong><br>' + esc(prijsPerNachtTekst(p))
+        );
+        marker.addTo(markerLaag);
+        markers[p.id] = marker;
+      });
+
+      lijst.innerHTML = resultaat.length
+        ? resultaat.map(plekKaartHTML).join('')
+        : '<p>Geen plekken gevonden met deze filters.</p>';
+
+      teller.textContent = resultaat.length + ' van ' + plekken.length + ' plekken getoond';
+
+      lijst.querySelectorAll('[data-plek]').forEach(function (kaartEl) {
+        function toonOpKaart() {
+          var id = kaartEl.getAttribute('data-plek');
+          var p = plekken.filter(function (x) { return x.id === id; })[0];
+          if (p && markers[id]) {
+            kaart.setView([p.lat, p.lng], 11);
+            markers[id].openPopup();
+          }
+        }
+        kaartEl.addEventListener('click', toonOpKaart);
+        kaartEl.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            toonOpKaart();
+          }
+        });
+      });
+    }
+
+    zoek.addEventListener('input', teken);
+    prijsSchuif.addEventListener('input', teken);
+    toonOnbekend.addEventListener('change', teken);
+
+    teken();
+  }
+
   /* ---------- Menu voor mobiel ---------- */
 
   document.addEventListener('click', function (e) {
@@ -362,6 +495,8 @@
       laden = laadJson('data/producten.json').then(initVergelijkingen);
     } else if (pagina === 'artikelen') {
       laden = laadJson('data/artikelen.json').then(initArtikelen);
+    } else if (pagina === 'kampeerplekken') {
+      laden = laadJson('data/kampeerplekken.json').then(initKampeerplekken);
     }
 
     if (laden) {

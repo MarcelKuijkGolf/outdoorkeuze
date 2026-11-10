@@ -12,10 +12,15 @@
       "Voorbeeld: gewicht invullen",
       "Voorbeeld: waterdichtheid invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "instap"
   },
   {
     "id": "slaapzak-voorbeeld",
@@ -30,10 +35,15 @@
       "Voorbeeld: vulmateriaal invullen",
       "Voorbeeld: pasvorm invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "gevorderd"
   },
   {
     "id": "slaapmat-voorbeeld",
@@ -48,10 +58,15 @@
       "Voorbeeld: opblaasbaar of zelfopblazend invullen",
       "Voorbeeld: gewicht invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "expert"
   },
   {
     "id": "kampeerstoel-voorbeeld",
@@ -66,10 +81,15 @@
       "Voorbeeld: inklapmaat invullen",
       "Voorbeeld: gewicht invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "instap"
   },
   {
     "id": "rugzak-voorbeeld-50l",
@@ -84,10 +104,15 @@
       "Voorbeeld: rugsysteem verstelbaar",
       "Voorbeeld: gewicht invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "gevorderd"
   },
   {
     "id": "jas-voorbeeld",
@@ -102,10 +127,15 @@
       "Voorbeeld: ademend vermogen invullen",
       "Voorbeeld: gewicht invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "expert"
   },
   {
     "id": "hoofdlamp-voorbeeld",
@@ -120,10 +150,15 @@
       "Voorbeeld: batterijduur invullen",
       "Voorbeeld: gewicht invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "instap"
   },
   {
     "id": "kooktoestel-voorbeeld",
@@ -138,9 +173,14 @@
       "Voorbeeld: vermogen invullen",
       "Voorbeeld: gewicht invullen"
     ],
-    "voordelen": ["Voorbeeld: voordeel invullen"],
-    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "voordelen": [
+      "Voorbeeld: voordeel invullen"
+    ],
+    "nadelen": [
+      "Voorbeeld: nadeel invullen"
+    ],
     "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
-    "affiliate_status": "placeholder"
+    "affiliate_status": "placeholder",
+    "niveau": "gevorderd"
   }
 ]

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Productvergelijkingen | OutdoorKeuze.nl</title>
-  <meta name="description" content="Vergelijk outdoorproducten op merk, prijs en eigenschappen. Filter op categorie en zoek op naam.">
+  <meta name="description" content="Vergelijk outdoorproducten op niveau, merk en eigenschappen. Filter op categorie en zoek op naam.">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-pagina="vergelijkingen">
@@ -22,6 +22,10 @@
     <div class="filters">
       <label for="filter-zoek" class="verborgen">Zoek op naam of merk</label>
       <input type="search" id="filter-zoek" placeholder="Zoek op naam of merk">
+    </div>
+
+    <div class="filter-groep">
+      <span class="filter-label">Categorie</span>
       <div class="categorie-knoppen">
         <button type="button" class="filter-knop" data-categorie="">Alles</button>
         <button type="button" class="filter-knop" data-categorie="kamperen">Kamperen</button>
@@ -30,6 +34,18 @@
         <button type="button" class="filter-knop" data-categorie="uitrusting">Uitrusting</button>
       </div>
     </div>
+
+    <div class="filter-groep">
+      <span class="filter-label">Niveau</span>
+      <div class="categorie-knoppen">
+        <button type="button" class="filter-knop" data-niveau="">Alle niveaus</button>
+        <button type="button" class="filter-knop" data-niveau="instap">Instap</button>
+        <button type="button" class="filter-knop" data-niveau="gevorderd">Gevorderd</button>
+        <button type="button" class="filter-knop" data-niveau="expert">Expert</button>
+      </div>
+      <p class="kleine-tekst">Instap is eenvoudig en betaalbaar. Gevorderd en Expert zijn technischer en vaak duurder.</p>
+    </div>
+
     <p id="resultaat-teller" class="kleine-tekst"></p>
     <div class="grid-3" id="productlijst"></div>
   </section>

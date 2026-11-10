@@ -1,0 +1,68 @@
+[
+  {
+    "id": "plek-voorbeeld-veluwe",
+    "naam": "Voorbeeldcamping Veluwe",
+    "plaats": "Veluwe",
+    "provincie": "Gelderland",
+    "lat": 52.13,
+    "lng": 5.80,
+    "prijs_per_nacht": null,
+    "voorzieningen": ["Sanitair", "Wifi", "Honden toegestaan"],
+    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+  },
+  {
+    "id": "plek-voorbeeld-achterhoek",
+    "naam": "Voorbeeldcamping Achterhoek",
+    "plaats": "Achterhoek",
+    "provincie": "Gelderland",
+    "lat": 52.00,
+    "lng": 6.55,
+    "prijs_per_nacht": null,
+    "voorzieningen": ["Sanitair", "Speeltuin"],
+    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+  },
+  {
+    "id": "plek-voorbeeld-drenthe",
+    "naam": "Voorbeeldcamping Drenthe",
+    "plaats": "Drenthe",
+    "provincie": "Drenthe",
+    "lat": 52.90,
+    "lng": 6.60,
+    "prijs_per_nacht": null,
+    "voorzieningen": ["Sanitair", "Wandelroutes in de buurt"],
+    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+  },
+  {
+    "id": "plek-voorbeeld-zeeland",
+    "naam": "Voorbeeldcamping Zeeland",
+    "plaats": "Zeeland",
+    "provincie": "Zeeland",
+    "lat": 51.50,
+    "lng": 3.75,
+    "prijs_per_nacht": null,
+    "voorzieningen": ["Sanitair", "Dichtbij het strand", "Wifi"],
+    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+  },
+  {
+    "id": "plek-voorbeeld-limburg",
+    "naam": "Voorbeeldcamping Limburg",
+    "plaats": "Zuid-Limburg",
+    "provincie": "Limburg",
+    "lat": 50.85,
+    "lng": 5.85,
+    "prijs_per_nacht": null,
+    "voorzieningen": ["Sanitair", "Zwembad"],
+    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+  },
+  {
+    "id": "plek-voorbeeld-friesland",
+    "naam": "Voorbeeldcamping Friesland",
+    "plaats": "Friesland",
+    "provincie": "Friesland",
+    "lat": 53.00,
+    "lng": 5.80,
+    "prijs_per_nacht": null,
+    "voorzieningen": ["Sanitair", "Fietsverhuur"],
+    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+  }
+]
