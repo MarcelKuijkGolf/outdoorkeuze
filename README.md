@@ -74,3 +74,13 @@ Voeg een blok toe aan `data/artikelen.json` met `id`, `type` (`artikel` of `koop
 Het bestand `data/campings-osm.json` bevat campings en kampeerterreinen uit OpenStreetMap. Een GitHub-workflow (`.github/workflows/campings-bijwerken.yml`) werkt dit bestand elke maand bij via `scripts/haal_campings_op.py`. Je kunt de workflow ook handmatig starten via het tabblad **Actions**.
 
 Let op de licentie: de gegevens komen uit OpenStreetMap en vallen onder de **ODbL**. Vermeld daarom altijd de bron (*© OpenStreetMap-bijdragers*), zoals op de kaartpagina. Als je de dataset zelf verspreidt, geldt de ODbL ook voor die dataset.
+
+## Tests
+
+De databestanden in `data/` worden gecontroleerd met Node's ingebouwde testrunner (geen installatie nodig, Node 18 of hoger):
+
+```
+npm test
+```
+
+De tests controleren onder meer op dubbele id's, geldige categorieën en niveaus, coördinaten binnen Nederland, en of placeholder-producten geen prijs of echte affiliate-link hebben.

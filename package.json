@@ -1,0 +1,10 @@
+{
+  "name": "outdoorkeuze",
+  "version": "0.1.0",
+  "private": true,
+  "description": "OutdoorKeuze.nl: statische site met koopgidsen en campings",
+  "scripts": {
+    "test": "node --test tests/*.test.js"
+  },
+  "license": "UNLICENSED"
+}
