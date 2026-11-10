@@ -235,6 +235,10 @@
   }
 
   function prijsPerNachtTekst(p) {
+    // Gesloten campings tonen geen prijs, maar de reden en het moment van openen.
+    if (p.gesloten_tekst) {
+      return p.gesloten_tekst;
+    }
     // Een prijs zonder datum tonen we niet: je moet kunnen zien hoe oud hij is.
     if (typeof p.prijs_per_nacht !== 'number' || !p.prijs_datum) {
       return 'Prijs per nacht volgt';
@@ -447,6 +451,7 @@
       if (plaats) {
         regels.push('<span>' + esc(plaats) + '</span>');
       }
+      regels.push('<span>' + esc(prijsPerNachtTekst(p)) + '</span>');
       if (p.website && /^https:\/\//.test(p.website)) {
         regels.push('<a href="' + esc(p.website) + '" target="_blank" rel="noopener">Website van de camping</a>');
       }
