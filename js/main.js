@@ -410,6 +410,8 @@
     teken();
   }
 
+  var PITCHUP_NL = 'https://www.pitchup.com/en-us/campsites/netherlands/-/english/';
+
   function initKampeerplekken(kuratiePlekken, osmPlekken) {
     var plekken = kuratiePlekken.concat(osmPlekken || []);
     if (!window.L) {
@@ -431,8 +433,23 @@
       attribution: '&copy; OpenStreetMap-bijdragers'
     }).addTo(kaart);
 
-    var markerLaag = L.layerGroup().addTo(kaart);
+    // Clusters houden de kaart licht als er veel campings bij komen
+    var markerLaag = L.markerClusterGroup({ maxClusterRadius: 45, showCoverageOnHover: false }).addTo(kaart);
     var markers = {};
+
+    // Lichte popup: alleen wat nodig is. Prijzen komen later uit een afgesproken bron.
+    function popupHTML(p) {
+      var regels = ['<strong>' + esc(p.naam) + '</strong>'];
+      var plaats = [p.plaats, p.provincie].filter(Boolean).join(' · ');
+      if (plaats) {
+        regels.push('<span>' + esc(plaats) + '</span>');
+      }
+      if (p.website && /^https:\/\//.test(p.website)) {
+        regels.push('<a href="' + esc(p.website) + '" target="_blank" rel="noopener">Website van de camping</a>');
+      }
+      regels.push('<a href="' + PITCHUP_NL + '" target="_blank" rel="noopener">Prijzen op Pitchup (Nederland)</a>');
+      return regels.join('<br>');
+    }
 
     function passeert(p) {
       var zoekterm = zoek.value.trim().toLowerCase();
@@ -465,9 +482,7 @@
           color: '#1e3b2a',
           fillColor: '#4f9a62',
           fillOpacity: 0.9
-        }).bindPopup(
-          '<strong>' + esc(p.naam) + '</strong><br>' + esc(prijsPerNachtTekst(p))
-        );
+        }).bindPopup(popupHTML(p));
         marker.addTo(markerLaag);
         markers[p.id] = marker;
       });
@@ -486,8 +501,10 @@
           var id = kaartEl.getAttribute('data-plek');
           var p = plekken.filter(function (x) { return x.id === id; })[0];
           if (p && markers[id]) {
-            kaart.setView([p.lat, p.lng], 11);
-            markers[id].openPopup();
+            // zoomToShowLayer zoomt uit de cluster en opent daarna de popup
+            markerLaag.zoomToShowLayer(markers[id], function () {
+              markers[id].openPopup();
+            });
           }
         }
         kaartEl.addEventListener('click', toonOpKaart);
