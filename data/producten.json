@@ -1,0 +1,146 @@
+[
+  {
+    "id": "tent-voorbeeld-2p",
+    "naam": "Voorbeeldtent 2 personen",
+    "merk": "Voorbeeldmerk A",
+    "categorie": "kamperen",
+    "subcategorie": "Tenten",
+    "prijs": null,
+    "uitgelicht": true,
+    "eigenschappen": [
+      "Voorbeeld: geschikt voor 2 personen",
+      "Voorbeeld: gewicht invullen",
+      "Voorbeeld: waterdichtheid invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "slaapzak-voorbeeld",
+    "naam": "Voorbeeldslaapzak comfort",
+    "merk": "Voorbeeldmerk B",
+    "categorie": "kamperen",
+    "subcategorie": "Slaapzakken en slaapmatten",
+    "prijs": null,
+    "uitgelicht": false,
+    "eigenschappen": [
+      "Voorbeeld: comforttemperatuur invullen",
+      "Voorbeeld: vulmateriaal invullen",
+      "Voorbeeld: pasvorm invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "slaapmat-voorbeeld",
+    "naam": "Voorbeeldslaapmat",
+    "merk": "Voorbeeldmerk C",
+    "categorie": "kamperen",
+    "subcategorie": "Slaapzakken en slaapmatten",
+    "prijs": null,
+    "uitgelicht": false,
+    "eigenschappen": [
+      "Voorbeeld: isolatiewaarde invullen",
+      "Voorbeeld: opblaasbaar of zelfopblazend invullen",
+      "Voorbeeld: gewicht invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "kampeerstoel-voorbeeld",
+    "naam": "Voorbeeldkampeerstoel",
+    "merk": "Voorbeeldmerk D",
+    "categorie": "kamperen",
+    "subcategorie": "Kampeermeubels",
+    "prijs": null,
+    "uitgelicht": false,
+    "eigenschappen": [
+      "Voorbeeld: draagvermogen invullen",
+      "Voorbeeld: inklapmaat invullen",
+      "Voorbeeld: gewicht invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "rugzak-voorbeeld-50l",
+    "naam": "Voorbeeldrugzak 50 liter",
+    "merk": "Voorbeeldmerk E",
+    "categorie": "wandelen",
+    "subcategorie": "Rugzakken",
+    "prijs": null,
+    "uitgelicht": true,
+    "eigenschappen": [
+      "Voorbeeld: volume 50 liter",
+      "Voorbeeld: rugsysteem verstelbaar",
+      "Voorbeeld: gewicht invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "jas-voorbeeld",
+    "naam": "Voorbeeld outdoorjas",
+    "merk": "Voorbeeldmerk F",
+    "categorie": "outdoor",
+    "subcategorie": "Outdoor kleding",
+    "prijs": null,
+    "uitgelicht": false,
+    "eigenschappen": [
+      "Voorbeeld: waterdichtheid invullen",
+      "Voorbeeld: ademend vermogen invullen",
+      "Voorbeeld: gewicht invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "hoofdlamp-voorbeeld",
+    "naam": "Voorbeeldhoofdlamp",
+    "merk": "Voorbeeldmerk G",
+    "categorie": "outdoor",
+    "subcategorie": "Outdooraccessoires",
+    "prijs": null,
+    "uitgelicht": false,
+    "eigenschappen": [
+      "Voorbeeld: lumen invullen",
+      "Voorbeeld: batterijduur invullen",
+      "Voorbeeld: gewicht invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  },
+  {
+    "id": "kooktoestel-voorbeeld",
+    "naam": "Voorbeeldkooktoestel",
+    "merk": "Voorbeeldmerk H",
+    "categorie": "uitrusting",
+    "subcategorie": "Kooktoestellen en kampeerkeukens",
+    "prijs": null,
+    "uitgelicht": true,
+    "eigenschappen": [
+      "Voorbeeld: brandertype invullen",
+      "Voorbeeld: vermogen invullen",
+      "Voorbeeld: gewicht invullen"
+    ],
+    "voordelen": ["Voorbeeld: voordeel invullen"],
+    "nadelen": ["Voorbeeld: nadeel invullen"],
+    "affiliate_url": "https://www.voorbeeldwinkel.nl/vervang-door-affiliatelink",
+    "affiliate_status": "placeholder"
+  }
+]

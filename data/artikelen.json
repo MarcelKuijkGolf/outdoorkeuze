@@ -1,0 +1,62 @@
+[
+  {
+    "id": "welke-tent-past-bij-jou",
+    "type": "artikel",
+    "titel": "Welke tent past bij jou?",
+    "datum": "2026-11-02",
+    "samenvatting": "Aantal personen, type tent en gebruik bepalen samen welke tent geschikt is.",
+    "inhoud": [
+      "Bij tenten geven fabrikanten vaak een krap aantal personen aan. Kies je voor comfort, dan is het verstandig een maat groter te nemen dan het aantal personen dat meegaat.",
+      "Let daarna op het type. Een koepeltent is over het algemeen stabiel bij wind, een tunneltent biedt vaak veel leefruimte voor het gewicht, en een opblaasbare tent is snel op te zetten maar weegt meestal meer.",
+      "Denk ook aan het seizoen en het vervoer. Voor korte wandelingen is een lichte tent prettig. Kamp je met de auto en verwacht je wisselvallig weer, dan is een stevigere tent met een goede waterdichtheid beter."
+    ]
+  },
+  {
+    "id": "wat-neem-je-mee-kampeerweekend",
+    "type": "artikel",
+    "titel": "Wat neem je mee op een kampeerweekend?",
+    "datum": "2026-11-08",
+    "samenvatting": "Een overzicht per categorie, zodat je niets vergeet en niets onnodig meeneemt.",
+    "inhoud": [
+      "Maak een lijst per categorie: slapen, koken, kleding, licht, veiligheid en hygiëne. Zo zie je meteen wat er ontbreekt.",
+      "Neem meer warme kleding mee dan je denkt, ook in de zomer. 's Nachts kan het op een kampeerplek flink afkoelen, zeker bij de grond.",
+      "Controleer de weersverwachting vooraf en neem je eigen afvalzakken mee als er op de kampeerplek geen voorzieningen zijn."
+    ]
+  },
+  {
+    "id": "slaapzak-kopen-waar-letten",
+    "type": "koopgids",
+    "titel": "Waar moet je op letten bij het kopen van een slaapzak?",
+    "datum": "2026-11-05",
+    "samenvatting": "Temperatuurgrenzen, vulmateriaal en vorm: de drie punten die het meest uitmaken.",
+    "inhoud": [
+      "Kijk eerst naar de temperatuurindicaties. Veel slaapzakken hebben een comfortgrens, een limietgrens en een extreme grens, vaak volgens de Europese norm EN 13537. De comfortgrens is een richtlijn voor een gemiddelde slaper.",
+      "Donsvulling is licht en warm, maar verliest zijn isolatie als het nat wordt. Synthetische vulling is iets zwaarder, maar droogt sneller en blijft beter isoleren bij vocht.",
+      "De vorm bepaalt hoeveel ruimte je hebt en hoe goed de warmte blijft hangen. Een mummyvorm houdt warmte beter vast, een rechthoekige vorm geeft meer bewegingsruimte."
+    ]
+  },
+  {
+    "id": "beginnende-kampeerder-uitrusting",
+    "type": "koopgids",
+    "titel": "De beste uitrusting voor een beginnende kampeerder",
+    "datum": "2026-11-07",
+    "samenvatting": "Begin met de basis en vul daarna aan. Zo koop je niet meer dan je nodig hebt.",
+    "inhoud": [
+      "Begin met een tent die je past, een slaapzak en een slaapmat. Een slaapmat isoleert tegen de koude ondergrond en is vaak belangrijker dan veel beginners denken.",
+      "Vul het aan met een goede lamp, een eenvoudige kookgelegenheid, warme kleding in lagen en een EHBO-set.",
+      "Oefen thuis of op een dagje weg met het opzetten van je tent. Zo ontdek je wat ontbreekt en wat je niet nodig hebt."
+    ]
+  },
+  {
+    "id": "wandelrugzak-kiezen",
+    "type": "artikel",
+    "titel": "Hoe kies je een goede wandelrugzak?",
+    "datum": "2026-11-09",
+    "samenvatting": "Volume, rugmaat en gewicht bepalen samen hoe comfortabel een rugzak voelt.",
+    "inhoud": [
+      "Het volume van een rugzak wordt in liters uitgedrukt. Voor een dagtocht zijn 20 tot 30 liter vaak voldoende. Voor meerdaagse tochten is 50 liter of meer vaak nodig, afhankelijk van wat je meeneemt.",
+      "Meet je rugmaat, niet alleen je lichaamslengte. Veel rugzakken hebben een verstelbaar rugsysteem, en de juiste maat bepaalt hoe het gewicht over je heupen wordt verdeeld.",
+      "Let op het gewicht van de rugzak zelf. Pas een rugzak indien mogelijk in de winkel aan met wat gewicht erin, en loop er even mee."
+    ]
+  }
+]

@@ -1,0 +1,587 @@
+/* ==========================================================
+   OutdoorKeuze.nl - stijlen
+   Kleuren: donkergroen, beige en wit
+   ========================================================== */
+
+:root {
+  --groen: #1e3b2a;
+  --groen-2: #2f5d43;
+  --groen-licht: #e6efe8;
+  --beige: #f4ecdb;
+  --beige-donker: #e3d6b8;
+  --wit: #ffffff;
+  --tekst: #23291f;
+  --grijs: #5d6457;
+  --accent: #b7793a;
+  --accent-donker: #9a6229;
+  --radius: 14px;
+  --schaduw: 0 6px 18px rgba(30, 59, 42, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--tekst);
+  background: var(--wit);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1, h2, h3, h4 {
+  color: var(--groen);
+  line-height: 1.25;
+  margin: 0.4em 0;
+}
+
+h1 { font-size: clamp(2rem, 4vw, 2.8rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); }
+
+a {
+  color: var(--groen-2);
+}
+
+/* Alleen voor schermlezers */
+.verborgen {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---------- Secties en rasters ---------- */
+
+.sectie {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 3.5rem 1.2rem;
+}
+
+/* Volle breedte achtergrond, inhoud blijft uitgelijnd */
+.achtergrond-licht {
+  max-width: none;
+  background: var(--beige);
+  padding-left: max(1.2rem, calc((100% - 1140px) / 2 + 1.2rem));
+  padding-right: max(1.2rem, calc((100% - 1140px) / 2 + 1.2rem));
+}
+
+.grid-2,
+.grid-3,
+.grid-4 {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.grid-2 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+.grid-3 { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.grid-4 { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+
+.toelichting,
+.kleine-tekst {
+  font-size: 0.9rem;
+  color: var(--grijs);
+}
+
+/* ---------- Header ---------- */
+
+.site-header {
+  background: var(--groen);
+  color: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+}
+
+.kop-inhoud {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0.8rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.3px;
+}
+
+.logo span {
+  color: #e9d9b0;
+}
+
+.menu-knop {
+  display: none;
+  background: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  border-radius: 8px;
+  padding: 0.4rem 0.9rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+}
+
+.hoofdmenu {
+  display: flex;
+  gap: 1.1rem;
+  flex-wrap: wrap;
+}
+
+.hoofdmenu a {
+  color: #f4ecdb;
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.hoofdmenu a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 820px) {
+  .menu-knop {
+    display: inline-block;
+  }
+
+  .hoofdmenu {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0.3rem;
+    padding: 0.6rem 0 0.2rem;
+  }
+
+  .hoofdmenu.open {
+    display: flex;
+  }
+}
+
+/* ---------- Hero ---------- */
+
+.hero {
+  background:
+    radial-gradient(circle at 20% 20%, #4a7a5c 0%, transparent 45%),
+    radial-gradient(circle at 85% 80%, #8a6d3f 0%, transparent 40%),
+    linear-gradient(135deg, #1e3b2a, #2f5d43 60%, #4b4330);
+  color: #fff;
+  padding: 5rem 1.2rem;
+  text-align: center;
+}
+
+.hero h1 {
+  color: #fff;
+}
+
+.hero-label {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.8rem;
+  color: #e9d9b0;
+}
+
+.hero-inhoud {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.zoekbalk {
+  display: flex;
+  gap: 0.5rem;
+  max-width: 620px;
+  margin: 1.5rem auto 0;
+}
+
+.zoekbalk input {
+  flex: 1;
+  min-width: 0;
+  padding: 0.9rem 1.1rem;
+  border: 0;
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+.zoekbalk input:disabled {
+  background: #f0f0f0;
+}
+
+/* ---------- Knoppen ---------- */
+
+.knop {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 999px;
+  padding: 0.75rem 1.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.knop:hover {
+  background: var(--accent-donker);
+  transform: translateY(-1px);
+}
+
+.knop:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.filter-knop {
+  border: 1px solid var(--groen-2);
+  background: #fff;
+  color: var(--groen);
+  padding: 0.45rem 1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.filter-knop:hover,
+.filter-knop.actief {
+  background: var(--groen);
+  color: #fff;
+}
+
+/* ---------- Categorie-kaarten ---------- */
+
+.categorie-kaart {
+  background: #fff;
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  padding: 1.6rem;
+  box-shadow: var(--schaduw);
+  text-decoration: none;
+  color: var(--tekst);
+  transition: transform 0.2s;
+}
+
+.categorie-kaart:hover {
+  transform: translateY(-4px);
+}
+
+.categorie-kaart h3 {
+  margin: 0.3rem 0;
+}
+
+.icoon {
+  font-size: 2rem;
+}
+
+/* ---------- Productkaarten ---------- */
+
+.product-kaart {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  box-shadow: var(--schaduw);
+  overflow: hidden;
+}
+
+.demo-label {
+  position: absolute;
+  top: 0.7rem;
+  right: 0.7rem;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+/* Hier komt later een echte productfoto */
+.product-beeld {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, var(--groen-licht), var(--beige));
+}
+
+.product-inhoud {
+  flex: 1;
+  padding: 1.2rem;
+}
+
+.merk {
+  margin: 0;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--grijs);
+}
+
+.prijs {
+  margin: 0.3rem 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--groen);
+}
+
+.eigenschappen {
+  margin: 0.5rem 0;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+}
+
+.voor-nadelen {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  font-size: 0.88rem;
+}
+
+.voor-nadelen h4 {
+  font-size: 0.9rem;
+  margin: 0.4rem 0 0.2rem;
+}
+
+.voor-nadelen ul {
+  margin: 0;
+  padding-left: 1rem;
+}
+
+.product-actie {
+  padding: 0 1.2rem 1.2rem;
+}
+
+.product-actie .knop {
+  width: 100%;
+  text-align: center;
+}
+
+.placeholder-notitie {
+  display: block;
+  margin-bottom: 0.4rem;
+  font-size: 0.75rem;
+  font-style: italic;
+  text-align: center;
+  color: var(--grijs);
+}
+
+/* ---------- Filters (vergelijkingen en artikelen) ---------- */
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.filters input {
+  flex: 1;
+  min-width: 240px;
+  padding: 0.7rem 1rem;
+  border: 1px solid var(--beige-donker);
+  border-radius: 999px;
+  font-size: 1rem;
+}
+
+.categorie-knoppen {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pagina-kop {
+  background: var(--beige);
+  padding: 3rem 1.2rem;
+  text-align: center;
+}
+
+.pagina-kop p {
+  color: var(--grijs);
+  margin-bottom: 0;
+}
+
+/* ---------- Tips, artikelen ---------- */
+
+.tip {
+  background: var(--beige);
+  border-left: 4px solid var(--groen-2);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+}
+
+.artikel-kaart,
+.artikel-mini {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  padding: 1.4rem;
+  box-shadow: var(--schaduw);
+  color: var(--tekst);
+  text-decoration: none;
+  scroll-margin-top: 90px;
+}
+
+.artikel-mini:hover {
+  box-shadow: 0 10px 24px rgba(30, 59, 42, 0.18);
+}
+
+.badge {
+  display: inline-block;
+  background: var(--groen-licht);
+  color: var(--groen);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+}
+
+.datum {
+  margin: 0.2rem 0;
+  font-size: 0.85rem;
+  color: var(--grijs);
+}
+
+details summary {
+  margin: 0.6rem 0;
+  font-weight: 600;
+  color: var(--groen-2);
+  cursor: pointer;
+}
+
+/* ---------- Tekstpagina's en meldingen ---------- */
+
+.tekst-pagina {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 3rem 1.2rem;
+}
+
+.affiliate-melding {
+  background: var(--groen-licht);
+  border-left: 4px solid var(--groen-2);
+  border-radius: 8px;
+  padding: 1rem 1.2rem;
+  font-size: 0.92rem;
+}
+
+.fout-melding {
+  max-width: 1140px;
+  margin: 1rem auto;
+  padding: 1rem 1.2rem;
+  background: #fbe9e4;
+  border: 1px solid #d9836c;
+  border-radius: 8px;
+  color: #6b2a1a;
+}
+
+/* ---------- Nieuwsbrief ---------- */
+
+.nieuwsbrief {
+  background: var(--groen);
+  color: #fff;
+  text-align: center;
+  padding: 3.5rem 1.2rem;
+}
+
+.nieuwsbrief h2,
+.nieuwsbrief p {
+  color: #fff;
+}
+
+.nieuwsbrief .kleine-tekst {
+  color: #d9d3c2;
+}
+
+/* ---------- Footer ---------- */
+
+.site-footer {
+  background: #16291e;
+  color: #d9d3c2;
+  padding: 3rem 0 1.5rem;
+}
+
+.site-footer .container {
+  max-width: 1140px;
+  margin: 0 auto;
+  padding: 0 1.2rem;
+}
+
+.site-footer h4 {
+  color: #fff;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.site-footer li {
+  margin: 0.3rem 0;
+}
+
+.site-footer a {
+  color: #e9d9b0;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+}
+
+.footer-onder {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #2f4a3a;
+  font-size: 0.85rem;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 600px) {
+  .hero {
+    padding: 3.5rem 1.2rem;
+  }
+
+  .zoekbalk {
+    flex-direction: column;
+  }
+
+  .zoekbalk .knop {
+    width: 100%;
+  }
+
+  .voor-nadelen {
+    grid-template-columns: 1fr;
+  }
+
+  .filters input {
+    min-width: 0;
+    width: 100%;
+  }
+}

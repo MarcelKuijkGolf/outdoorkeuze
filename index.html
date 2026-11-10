@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OutdoorKeuze.nl | Alles voor jouw volgende avontuur</title>
+  <meta name="description" content="Vergelijk outdoorproducten voor kamperen, wandelen en outdoor. Overzichtelijke koopgidsen en handige tips.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="home">
+
+<div id="site-header"></div>
+
+<main>
+
+  <section class="hero">
+    <div class="hero-inhoud">
+      <p class="hero-label">Outdoor vergelijken</p>
+      <h1>Alles voor jouw volgende avontuur</h1>
+      <p>Vergelijk tenten, slaapzakken, rugzakken en meer. Overzichtelijk uitgelegd, zodat je met een goed gevoel kiest.</p>
+      <form class="zoekbalk" action="vergelijkingen.html" method="get" role="search">
+        <label for="zoek" class="verborgen">Zoek naar een product</label>
+        <input type="search" id="zoek" name="q" placeholder="Zoek bijvoorbeeld: tent, slaapzak, rugzak">
+        <button type="submit" class="knop">Zoeken</button>
+      </form>
+    </div>
+  </section>
+
+  <section class="sectie">
+    <h2>Kies een categorie</h2>
+    <div class="grid-4">
+      <a class="categorie-kaart" href="vergelijkingen.html?categorie=kamperen">
+        <span class="icoon" aria-hidden="true">⛺</span>
+        <h3>Kamperen</h3>
+        <p>Tenten, slaapzakken, slaapmatten, kampeermeubels en kampeerkeukens.</p>
+      </a>
+      <a class="categorie-kaart" href="vergelijkingen.html?categorie=wandelen">
+        <span class="icoon" aria-hidden="true">🥾</span>
+        <h3>Wandelen</h3>
+        <p>Rugzakken en uitrusting voor dagtochten en meerdaagse trektochten.</p>
+      </a>
+      <a class="categorie-kaart" href="vergelijkingen.html?categorie=outdoor">
+        <span class="icoon" aria-hidden="true">🧥</span>
+        <h3>Outdoor</h3>
+        <p>Outdoorkleding en accessoires voor elk weer.</p>
+      </a>
+      <a class="categorie-kaart" href="vergelijkingen.html?categorie=uitrusting">
+        <span class="icoon" aria-hidden="true">🎒</span>
+        <h3>Uitrusting</h3>
+        <p>Kooktoestellen, meubels en alles wat je op pad nodig hebt.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="sectie achtergrond-licht">
+    <h2>Uitgelichte vergelijkingen</h2>
+    <p class="toelichting">Let op: de producten hieronder zijn demonstratiegegevens. Prijzen, eigenschappen en links worden later vervangen door echte gegevens.</p>
+    <div class="grid-3" id="uitgelicht"></div>
+  </section>
+
+  <section class="sectie">
+    <h2>Populaire koopgidsen</h2>
+    <div class="grid-2" id="koopgidsen"></div>
+  </section>
+
+  <section class="sectie achtergrond-licht">
+    <h2>Recente artikelen</h2>
+    <div class="grid-3" id="recente-artikelen"></div>
+  </section>
+
+  <section class="sectie">
+    <h2>Handige kooptips</h2>
+    <div class="grid-3">
+      <div class="tip">
+        <h3>Denk aan je gebruik</h3>
+        <p>Dagtocht, meerdaags trekken of kamperen op een vaste plek bepalen grotendeels welk product bij je past.</p>
+      </div>
+      <div class="tip">
+        <h3>Let op gewicht en volume</h3>
+        <p>Bij een lange tocht telt elk gram. Vergelijk het gewicht van het product zelf en het volume in liters of kubieke centimeters.</p>
+      </div>
+      <div class="tip">
+        <h3>Test waar het kan</h3>
+        <p>Pasvorm en bediening verschillen sterk per merk. Probeer een rugzak of schoen indien mogelijk eerst in de winkel.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="nieuwsbrief">
+    <h2>Blijf op de hoogte</h2>
+    <p>Nieuwe koopgidsen en vergelijkingen? Die komen er later aan.</p>
+    <p class="kleine-tekst">Het aanmeldformulier is nog niet actief en verzamelt nog geen gegevens.</p>
+    <form class="zoekbalk" onsubmit="return false;">
+      <label for="email" class="verborgen">E-mailadres</label>
+      <input type="email" id="email" placeholder="Jouw e-mailadres" disabled>
+      <button type="submit" class="knop" disabled>Binnenkort</button>
+    </form>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>

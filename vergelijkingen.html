@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Productvergelijkingen | OutdoorKeuze.nl</title>
+  <meta name="description" content="Vergelijk outdoorproducten op merk, prijs en eigenschappen. Filter op categorie en zoek op naam.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="vergelijkingen">
+
+<div id="site-header"></div>
+
+<main>
+
+  <section class="pagina-kop">
+    <h1 id="paginatitel">Productvergelijkingen</h1>
+    <p>Demonstratiegegevens: de producten op deze pagina zijn voorbeelden.</p>
+  </section>
+
+  <section class="sectie">
+    <div class="filters">
+      <label for="filter-zoek" class="verborgen">Zoek op naam of merk</label>
+      <input type="search" id="filter-zoek" placeholder="Zoek op naam of merk">
+      <div class="categorie-knoppen">
+        <button type="button" class="filter-knop" data-categorie="">Alles</button>
+        <button type="button" class="filter-knop" data-categorie="kamperen">Kamperen</button>
+        <button type="button" class="filter-knop" data-categorie="wandelen">Wandelen</button>
+        <button type="button" class="filter-knop" data-categorie="outdoor">Outdoor</button>
+        <button type="button" class="filter-knop" data-categorie="uitrusting">Uitrusting</button>
+      </div>
+    </div>
+    <p id="resultaat-teller" class="kleine-tekst"></p>
+    <div class="grid-3" id="productlijst"></div>
+  </section>
+
+  <section class="sectie">
+    <div class="affiliate-melding">
+      <strong>Affiliatelinks:</strong> sommige knoppen zijn of worden affiliatelinks. Als je via zo'n link koopt, kan OutdoorKeuze.nl een commissie ontvangen, zonder extra kosten voor jou. Lees meer in onze <a href="affiliate.html">affiliateverklaring</a>.
+    </div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
