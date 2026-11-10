@@ -173,13 +173,27 @@ a {
 /* ---------- Hero ---------- */
 
 .hero {
+  position: relative;
+  overflow: hidden;
   background:
     radial-gradient(circle at 20% 20%, #4a7a5c 0%, transparent 45%),
     radial-gradient(circle at 85% 80%, #8a6d3f 0%, transparent 40%),
     linear-gradient(135deg, #1e3b2a, #2f5d43 60%, #4b4330);
   color: #fff;
-  padding: 5rem 1.2rem;
+  padding: 5rem 1.2rem 9rem;
   text-align: center;
+}
+
+/* Bergen en bomen onderaan de hero */
+.hero::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(90px, 22vw, 320px);
+  background: url("../images/bergen.svg") no-repeat bottom center / 100% 100%;
+  pointer-events: none;
 }
 
 .hero h1 {
@@ -195,6 +209,8 @@ a {
 }
 
 .hero-inhoud {
+  position: relative;
+  z-index: 1;
   max-width: 720px;
   margin: 0 auto;
 }
@@ -565,7 +581,7 @@ details summary {
 
 @media (max-width: 600px) {
   .hero {
-    padding: 3.5rem 1.2rem;
+    padding: 3.5rem 1.2rem 6rem;
   }
 
   .zoekbalk {
