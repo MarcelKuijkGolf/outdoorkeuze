@@ -235,9 +235,12 @@
   }
 
   function prijsPerNachtTekst(p) {
-    return (typeof p.prijs_per_nacht === 'number')
-      ? '€ ' + p.prijs_per_nacht.toFixed(2).replace('.', ',') + ' per nacht'
-      : 'Prijs per nacht volgt';
+    // Een prijs zonder datum tonen we niet: je moet kunnen zien hoe oud hij is.
+    if (typeof p.prijs_per_nacht !== 'number' || !p.prijs_datum) {
+      return 'Prijs per nacht volgt';
+    }
+    return 'Vanaf € ' + p.prijs_per_nacht.toFixed(2).replace('.', ',') + ' per nacht' +
+      ' (stand ' + datumNL(p.prijs_datum) + ')';
   }
 
   function artikelKaartHTML(a, openen) {
