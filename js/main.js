@@ -126,6 +126,7 @@
           '<button class="menu-knop" type="button" aria-expanded="false" aria-controls="hoofdmenu">Menu</button>' +
           '<nav id="hoofdmenu" class="hoofdmenu" aria-label="Hoofdmenu">' +
             '<a href="index.html">Home</a>' +
+            '<a href="kiezen.html">Help me kiezen</a>' +
             '<a href="vergelijkingen.html?categorie=kamperen">Kamperen</a>' +
             '<a href="kampeerplekken.html">Kampeerplekken</a>' +
             '<a href="vergelijkingen.html?categorie=wandelen">Wandelen</a>' +
@@ -410,6 +411,102 @@
     teken();
   }
 
+  // Help me kiezen: de klant vertelt wat hij gaat doen, de site bepaalt wat erbij hoort.
+  var KIEZER_ONDERDELEN = {
+    schoenen: { label: 'Wandelschoenen', reden: 'Goede schoenen voorkomen blaren en pijnlijke voeten.' },
+    rugzak: { label: 'Rugzak', reden: 'Een rugzak houdt je spullen bij elkaar en verdeelt het gewicht.' },
+    kleding: { label: 'Kleding', reden: 'Kleding in lagen houdt je warm en droog.' },
+    licht: { label: 'Licht', reden: 'Een hoofdlamp heb je nodig als het vroeg donker wordt.' },
+    tent: { label: 'Tent', reden: 'Een tent die bij je past en bij het weer.' },
+    slaapzak: { label: 'Slaapzak', reden: 'De slaapzak bepaalt hoe warm je slaapt.' },
+    slaapmat: { label: 'Slaapmat', reden: 'Een slaapmat isoleert tegen de koude grond.' },
+    koken: { label: 'Koken', reden: 'Een kookgelegenheid om warm te eten onderweg of op de camping.' },
+    meubels: { label: 'Stoel en meubels', reden: 'Een stoel en tafel maken het verblijf prettiger.' }
+  };
+
+  function kiezerLijst(activiteit) {
+    var lijst = [];
+    function voeg(tag) {
+      if (!KIEZER_ONDERDELEN[tag]) return;
+      if (lijst.indexOf(tag) === -1) lijst.push(tag);
+    }
+    if (activiteit === 'wandelen' || activiteit === 'beide') {
+      voeg('schoenen');
+      voeg('rugzak');
+      voeg('kleding');
+      voeg('licht');
+    }
+    if (activiteit === 'kamperen' || activiteit === 'beide') {
+      voeg('tent');
+      voeg('slaapzak');
+      voeg('slaapmat');
+      voeg('koken');
+      voeg('licht');
+      voeg('meubels');
+      voeg('kleding');
+    }
+    return lijst;
+  }
+
+  function kiezerTegelHTML(a) {
+    var alinea = (a.inhoud || []).map(function (tekst) {
+      return '<p>' + esc(tekst) + '</p>';
+    }).join('');
+    return '' +
+      '<article class="kiezer-tegel">' +
+        '<span class="badge">' + esc(TYPES[a.type] || 'Artikel') + '</span>' +
+        '<h4>' + esc(a.titel) + '</h4>' +
+        '<p class="kiezer-samenvatting">' + esc(a.samenvatting || '') + '</p>' +
+        '<details><summary>Lees het artikel</summary><div class="kiezer-inhoud">' + alinea + '</div></details>' +
+      '</article>';
+  }
+
+  function initKiezen(artikelen) {
+    var form = document.getElementById('kiezer');
+    var uit = document.getElementById('kiezer-resultaat');
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(form);
+      var activiteit = data.get('activiteit') || 'beide';
+      var beginner = data.get('ervaring') !== 'gevorderd';
+      var getoond = {};
+      var html = '';
+
+      function artikelenVoor(tag) {
+        return artikelen.filter(function (a) {
+          return a.gepubliceerd !== false && (a.tags || []).indexOf(tag) !== -1 && !getoond[a.id];
+        }).sort(function (a, b) {
+          return a.datum < b.datum ? 1 : -1;
+        });
+      }
+
+      function blok(kop, reden, lijst) {
+        var tegels = lijst.map(function (a) {
+          getoond[a.id] = true;
+          return kiezerTegelHTML(a);
+        }).join('');
+        return '<section class="kiezer-blok"><h3>' + esc(kop) + '</h3>' +
+          (reden ? '<p class="kiezer-reden">' + esc(reden) + '</p>' : '') +
+          (tegels
+            ? '<div class="kiezer-tegels">' + tegels + '</div>'
+            : '<p class="kiezer-nog">Hier hebben we nog geen artikel over. Dat komt eraan.</p>') +
+          '</section>';
+      }
+
+      if (beginner) {
+        html += blok('Begin hier', 'Als je nieuw bent, lees je eerst deze artikelen.', artikelenVoor('beginner'));
+      }
+
+      kiezerLijst(activiteit).forEach(function (tag) {
+        var onderdeel = KIEZER_ONDERDELEN[tag];
+        html += blok(onderdeel.label, onderdeel.reden, artikelenVoor(tag));
+      });
+
+      uit.innerHTML = html;
+    });
+  }
+
   function initKampeerplekken(kuratiePlekken, osmPlekken) {
     var plekken = kuratiePlekken.concat(osmPlekken || []);
     if (!window.L) {
@@ -560,6 +657,8 @@
       laden = producten().then(initVergelijkingen);
     } else if (pagina === 'artikelen') {
       laden = artikelen().then(initArtikelen);
+    } else if (pagina === 'kiezen') {
+      laden = artikelen().then(initKiezen);
     } else if (pagina === 'kampeerplekken') {
       laden = Promise.all([
         laadData('kampeerplekken', '&order=naam', 'data/kampeerplekken.json', function (k) {

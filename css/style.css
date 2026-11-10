@@ -975,3 +975,79 @@ h2::after {
     max-height: none;
   }
 }
+
+/* Help me kiezen */
+.kiezer {
+  display: grid;
+  gap: 1rem;
+  max-width: 720px;
+}
+.kiezer fieldset {
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  background: var(--wit);
+  padding: 0.9rem 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+}
+.kiezer legend {
+  font-weight: 700;
+  color: var(--groen);
+  padding: 0 0.3rem;
+}
+.kiezer label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+.kiezer input[type="radio"] {
+  accent-color: var(--accent);
+  width: 1.05rem;
+  height: 1.05rem;
+}
+.kiezer-resultaat {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.4rem;
+}
+.kiezer-blok h3 {
+  color: var(--groen);
+  margin-bottom: 0.3rem;
+}
+.kiezer-reden,
+.kiezer-nog {
+  color: var(--grijs);
+  margin-bottom: 0.8rem;
+}
+.kiezer-tegels {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1rem;
+}
+.kiezer-tegel {
+  background: var(--wit);
+  border: 1px solid var(--beige-donker);
+  border-radius: var(--radius);
+  box-shadow: var(--schaduw);
+  padding: 1rem 1.1rem;
+  display: grid;
+  gap: 0.5rem;
+  align-content: start;
+}
+.kiezer-tegel h4 {
+  color: var(--groen);
+  font-size: 1.05rem;
+}
+.kiezer-samenvatting {
+  color: var(--grijs);
+  font-size: 0.95rem;
+}
+.kiezer-tegel summary {
+  cursor: pointer;
+  color: var(--groen-2);
+  font-weight: 700;
+}
+.kiezer-inhoud p {
+  margin-top: 0.6rem;
+}

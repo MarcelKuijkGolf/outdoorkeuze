@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Help me kiezen | OutdoorKeuze.nl</title>
+  <meta name="description" content="Vertel wat je gaat doen en krijg de artikelen die daarbij passen.">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-pagina="kiezen">
+
+<div id="site-header"></div>
+
+<main>
+
+  <section class="pagina-kop">
+    <h1>Help me kiezen</h1>
+    <p>Vertel in een paar vragen wat je gaat doen. Dan laten we zien welke artikelen je moet lezen voordat je iets koopt.</p>
+  </section>
+
+  <section class="sectie">
+    <form id="kiezer" class="kiezer">
+
+      <fieldset>
+        <legend>1. Wat ga je doen?</legend>
+        <label><input type="radio" name="activiteit" value="wandelen"> Wandelen</label>
+        <label><input type="radio" name="activiteit" value="kamperen"> Kamperen</label>
+        <label><input type="radio" name="activiteit" value="beide" checked> Allebei</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>2. Is het je eerste keer?</legend>
+        <label><input type="radio" name="ervaring" value="beginner" checked> Ja, ik ben nieuw</label>
+        <label><input type="radio" name="ervaring" value="gevorderd"> Nee, ik heb al ervaring</label>
+      </fieldset>
+
+      <fieldset>
+        <legend>3. Hoe lang ga je weg?</legend>
+        <label><input type="radio" name="duur" value="dag" checked> Een dag</label>
+        <label><input type="radio" name="duur" value="meerdaags"> Meerdere dagen</label>
+      </fieldset>
+
+      <button type="submit" class="knop">Toon mijn lijst</button>
+    </form>
+
+    <div id="kiezer-resultaat" class="kiezer-resultaat" aria-live="polite"></div>
+  </section>
+
+</main>
+
+<div id="site-footer"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
