@@ -177,7 +177,6 @@
   function plekKaartHTML(p) {
     return '' +
       '<article class="plek-kaart" data-plek="' + esc(p.id) + '" tabindex="0">' +
-        '<span class="demo-label">Demo</span>' +
         '<h3>' + esc(p.naam) + '</h3>' +
         '<p class="merk">' + esc(p.plaats) + ' · ' + esc(p.provincie) + '</p>' +
         '<p class="prijs">' + esc(prijsPerNachtTekst(p)) + '</p>' +
@@ -407,6 +406,9 @@
       markerLaag.clearLayers();
       markers = {};
       resultaat.forEach(function (p) {
+        if (typeof p.lat !== 'number' || typeof p.lng !== 'number') {
+          return;
+        }
         var marker = L.marker([p.lat, p.lng]).bindPopup(
           '<strong>' + esc(p.naam) + '</strong><br>' + esc(prijsPerNachtTekst(p))
         );

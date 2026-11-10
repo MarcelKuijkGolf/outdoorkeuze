@@ -1,68 +1,180 @@
 [
   {
-    "id": "plek-voorbeeld-veluwe",
-    "naam": "Voorbeeldcamping Veluwe",
-    "plaats": "Veluwe",
+    "id": "camping-otterlo-en-de-veluwe",
+    "naam": "Camping Otterlo en de Veluwe",
+    "plaats": "Otterlo",
     "provincie": "Gelderland",
-    "lat": 52.13,
-    "lng": 5.80,
+    "lat": 52.1031,
+    "lng": 5.76141,
     "prijs_per_nacht": null,
-    "voorzieningen": ["Sanitair", "Wifi", "Honden toegestaan"],
-    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+    "voorzieningen": [
+      "Natuurbad op loopafstand",
+      "Dichtbij het park De Hoge Veluwe",
+      "Centrum Otterlo op 1 km"
+    ],
+    "website": "https://www.campercontact.com/nl/nederland/gelderland/otterlo/91998/camping-otterlo-en-de-veluwe.md"
   },
   {
-    "id": "plek-voorbeeld-achterhoek",
-    "naam": "Voorbeeldcamping Achterhoek",
-    "plaats": "Achterhoek",
+    "id": "camping-kampeerboerderij-meerveld",
+    "naam": "Camping & kampeerboerderij Meerveld",
+    "plaats": "Uddel",
     "provincie": "Gelderland",
-    "lat": 52.00,
-    "lng": 6.55,
+    "lat": 52.23297,
+    "lng": 5.75098,
     "prijs_per_nacht": null,
-    "voorzieningen": ["Sanitair", "Speeltuin"],
-    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+    "voorzieningen": [
+      "Rustige ligging in het bos",
+      "Verharde paden",
+      "Schone sanitaire voorzieningen"
+    ],
+    "website": "https://www.campercontact.com/en/netherlands/gelderland/uddel/76799/camping-kampeerboerderij-meerveld.md"
   },
   {
-    "id": "plek-voorbeeld-drenthe",
-    "naam": "Voorbeeldcamping Drenthe",
-    "plaats": "Drenthe",
+    "id": "camping-aan-veluwe",
+    "naam": "Camping Aan Veluwe",
+    "plaats": "Oosterbeek",
+    "provincie": "Gelderland",
+    "lat": 51.994179,
+    "lng": 5.82182,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Wifi op alle staanplaatsen",
+      "Honden toegestaan",
+      "Camperservicestation"
+    ],
+    "website": "https://www.anwbcamping.nl/campings/aan-veluwe"
+  },
+  {
+    "id": "camping-de-midden-veluwe",
+    "naam": "Camping De Midden Veluwe",
+    "plaats": "Harskamp",
+    "provincie": "Gelderland",
+    "lat": null,
+    "lng": null,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Zwembaden",
+      "Animatie voor kinderen",
+      "Huuraccommodaties"
+    ],
+    "website": "https://www.anwbcamping.nl/campings/camping-de-midden-veluwe"
+  },
+  {
+    "id": "huttopia-de-veluwe",
+    "naam": "Huttopia De Veluwe",
+    "plaats": "Kootwijk",
+    "provincie": "Gelderland",
+    "lat": null,
+    "lng": null,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Honden toegestaan",
+      "Animatie voor kinderen",
+      "Mindervaliden sanitair"
+    ],
+    "website": "https://www.anwbcamping.nl/campings/huttopia-de-veluwe"
+  },
+  {
+    "id": "camping-coldenhove",
+    "naam": "Camping Landal Coldenhove",
+    "plaats": "Eerbeek",
+    "provincie": "Gelderland",
+    "lat": null,
+    "lng": null,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Greenkey Eco Label",
+      "Gezinsvakantie"
+    ],
+    "website": "https://www.anwbcamping.nl/nederland/gelderland/landal-greenparks-camping-coldenhove"
+  },
+  {
+    "id": "camping-midden-drenthe",
+    "naam": "Camping Midden Drenthe",
+    "plaats": "Westerbork",
     "provincie": "Drenthe",
-    "lat": 52.90,
-    "lng": 6.60,
+    "lat": 52.87608,
+    "lng": 6.61304,
     "prijs_per_nacht": null,
-    "voorzieningen": ["Sanitair", "Wandelroutes in de buurt"],
-    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+    "voorzieningen": [
+      "Wifi op alle staanplaatsen",
+      "Honden toegestaan",
+      "Broodservice bij de receptie",
+      "Sanitair voor minder validen"
+    ],
+    "website": "https://www.anwbcamping.nl/campings/camping-midden-drenthe"
   },
   {
-    "id": "plek-voorbeeld-zeeland",
-    "naam": "Voorbeeldcamping Zeeland",
-    "plaats": "Zeeland",
+    "id": "de-lente-van-drenthe",
+    "naam": "Camping De Lente van Drenthe (Siblu)",
+    "plaats": "Gasselte",
+    "provincie": "Drenthe",
+    "lat": 52.97661,
+    "lng": 6.75666,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Zwembad",
+      "Mountainbiken door de bossen",
+      "Restaurant in de buurt"
+    ],
+    "website": "https://siblu.nl/camping/nederland/drenthe/de-lente-van-drenthe"
+  },
+  {
+    "id": "camping-de-balloohoeve",
+    "naam": "Camping De Balloohoeve",
+    "plaats": "Balloo",
+    "provincie": "Drenthe",
+    "lat": 52.993351,
+    "lng": 6.627437,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Boerencamping",
+      "Boodschappen en eetgelegenheid in de buurt",
+      "Hunebedden in de buurt"
+    ],
+    "website": "https://www.anwbcamping.nl/nederland/drenthe/camping-de-balloohoeve"
+  },
+  {
+    "id": "camping-elperhof",
+    "naam": "Camping Elperhof",
+    "plaats": "Schoonloo",
+    "provincie": "Drenthe",
+    "lat": null,
+    "lng": null,
+    "prijs_per_nacht": null,
+    "voorzieningen": [
+      "Wifi op alle staanplaatsen",
+      "Animatie bij slecht weer"
+    ],
+    "website": "https://www.anwbcamping.nl/campings/camping-elperhof"
+  },
+  {
+    "id": "strandpark-zeeland",
+    "naam": "Camping Strandpark Zeeland",
+    "plaats": "Vlissingen",
     "provincie": "Zeeland",
-    "lat": 51.50,
-    "lng": 3.75,
+    "lat": null,
+    "lng": null,
     "prijs_per_nacht": null,
-    "voorzieningen": ["Sanitair", "Dichtbij het strand", "Wifi"],
-    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+    "voorzieningen": [
+      "Wifi",
+      "Speeltuin",
+      "Douches en toiletten"
+    ],
+    "website": "https://www.campercontact.com/en/md/77714"
   },
   {
-    "id": "plek-voorbeeld-limburg",
-    "naam": "Voorbeeldcamping Limburg",
-    "plaats": "Zuid-Limburg",
-    "provincie": "Limburg",
-    "lat": 50.85,
-    "lng": 5.85,
+    "id": "ardoer-ginsterveld",
+    "naam": "Ardoer Camping Ginsterveld",
+    "plaats": "Burgh-Haamstede",
+    "provincie": "Zeeland",
+    "lat": null,
+    "lng": null,
     "prijs_per_nacht": null,
-    "voorzieningen": ["Sanitair", "Zwembad"],
-    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
-  },
-  {
-    "id": "plek-voorbeeld-friesland",
-    "naam": "Voorbeeldcamping Friesland",
-    "plaats": "Friesland",
-    "provincie": "Friesland",
-    "lat": 53.00,
-    "lng": 5.80,
-    "prijs_per_nacht": null,
-    "voorzieningen": ["Sanitair", "Fietsverhuur"],
-    "website": "https://www.voorbeeldcamping.nl/vervang-door-echte-link"
+    "voorzieningen": [
+      "Zwembad voor kinderen",
+      "Hondvrije zone"
+    ],
+    "website": "https://www.pincamp.de/niederlande/zeeland/hulst"
   }
 ]
