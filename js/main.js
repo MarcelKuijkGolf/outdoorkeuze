@@ -588,7 +588,11 @@
     } else if (pagina === 'kampeerplekken') {
       laden = Promise.all([
         laadData('kampeerplekken', '&order=naam', 'data/kampeerplekken.json', function (k) {
-          return Object.assign({}, k, { voorzieningen: k.voorzieningen || [] });
+          // numeric kan als tekst binnenkomen; zet prijzen altijd om naar een getal
+          return Object.assign({}, k, {
+            voorzieningen: k.voorzieningen || [],
+            prijs_per_nacht: k.prijs_per_nacht === null || k.prijs_per_nacht === undefined ? null : Number(k.prijs_per_nacht)
+          });
         }),
         laadJson('data/campings-osm.json').then(function (osm) {
           return osm.campings || [];
