@@ -601,3 +601,172 @@ details summary {
     width: 100%;
   }
 }
+
+/* ==========================================================
+   Visuele opfrisbeurt
+   ========================================================== */
+
+/* Accentstreepje onder koppen */
+h2 {
+  position: relative;
+  padding-bottom: 0.5rem;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 56px;
+  height: 4px;
+  margin-top: 0.5rem;
+  border-radius: 4px;
+  background: linear-gradient(90deg, var(--accent), #d9a866);
+}
+
+/* Heuvellandschap als subtiele achtergrond op beige secties */
+.achtergrond-licht {
+  position: relative;
+  overflow: hidden;
+}
+
+.achtergrond-licht::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(70px, 16vw, 200px);
+  background: url("../images/bergen.svg") no-repeat bottom center / 100% 100%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.achtergrond-licht > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Paginakop met landschap */
+.pagina-kop {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #f8f2e4, #efe4cb);
+  padding: 3.5rem 1.2rem 5.5rem;
+  border-bottom: 3px solid var(--groen-2);
+}
+
+.pagina-kop::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: clamp(60px, 14vw, 160px);
+  background: url("../images/bergen.svg") no-repeat bottom center / 100% 100%;
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.pagina-kop > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header met accentlijn */
+.site-header {
+  background: linear-gradient(90deg, #1b3526, var(--groen) 50%, #22442f);
+  border-bottom: 3px solid var(--accent);
+}
+
+/* Hero-label als pil */
+.hero-label {
+  display: inline-block;
+  padding: 0.3rem 0.9rem;
+  border: 1px solid rgba(233, 217, 176, 0.5);
+  border-radius: 999px;
+}
+
+/* Knoppen met verloop en schaduw */
+.knop {
+  background: linear-gradient(135deg, var(--accent), #d39a55);
+  box-shadow: 0 4px 12px rgba(183, 121, 58, 0.35);
+}
+
+.knop:hover {
+  background: linear-gradient(135deg, var(--accent-donker), var(--accent));
+  box-shadow: 0 6px 16px rgba(183, 121, 58, 0.45);
+}
+
+/* Categoriekaarten met icoon in cirkel */
+.categorie-kaart {
+  position: relative;
+  overflow: hidden;
+  border-top: 4px solid var(--groen-2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.categorie-kaart:hover {
+  box-shadow: 0 14px 30px rgba(30, 59, 42, 0.22);
+}
+
+.icoon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.4rem;
+  height: 3.4rem;
+  margin-bottom: 0.4rem;
+  border-radius: 50%;
+  background: var(--groen-licht);
+  font-size: 1.7rem;
+}
+
+/* Productkaarten: lift bij hover, rijker beeldvlak */
+.product-kaart {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.product-kaart:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 30px rgba(30, 59, 42, 0.2);
+}
+
+.product-beeld {
+  background:
+    repeating-linear-gradient(45deg, rgba(255, 255, 255, 0.07) 0 12px, transparent 12px 24px),
+    linear-gradient(135deg, #cfe0d3, #f4ecdb);
+}
+
+/* Artikelkaarten met accentrand */
+.artikel-kaart,
+.artikel-mini {
+  border-left: 5px solid var(--groen-2);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.artikel-mini:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 26px rgba(30, 59, 42, 0.18);
+}
+
+/* Tipkaarten met accent bovenaan */
+.tip {
+  background: linear-gradient(160deg, #f8f2e4, var(--beige));
+  border-left: none;
+  border-top: 4px solid var(--accent);
+}
+
+.tip h3 {
+  color: var(--accent-donker);
+}
+
+/* Nieuwsbrief met lichte gloed */
+.nieuwsbrief {
+  background:
+    radial-gradient(circle at 80% 0%, #2f5d43, transparent 60%),
+    var(--groen);
+}
+
+/* Footer met accentlijn */
+.site-footer {
+  border-top: 4px solid var(--accent);
+}
