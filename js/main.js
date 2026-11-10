@@ -67,6 +67,55 @@
     });
   }
 
+  // Supabase: schema outdoorkeuze. De publishable key is bedoeld voor de browser;
+  // de rijen die bezoekers zien worden bepaald door de RLS-policies (alleen gepubliceerd).
+  var SUPABASE_URL = 'https://xbbmunitjfbhkwesercs.supabase.co';
+  var SUPABASE_KEY = 'sb_publishable_n6sA6FYxP2Wpxh7tyANxXQ_D5drnXGv';
+
+  function leesSupabase(tabel, queryString) {
+    return fetch(SUPABASE_URL + '/rest/v1/' + tabel + '?select=*' + (queryString || ''), {
+      headers: {
+        apikey: SUPABASE_KEY,
+        Authorization: 'Bearer ' + SUPABASE_KEY,
+        'Accept-Profile': 'outdoorkeuze'
+      }
+    }).then(function (antwoord) {
+      if (!antwoord.ok) {
+        throw new Error('Supabase ' + tabel + ': ' + antwoord.status);
+      }
+      return antwoord.json();
+    });
+  }
+
+  // Probeert eerst de database. Lukt dat niet, of is de tabel leeg, dan de JSON-bestanden.
+  function laadData(tabel, queryString, pad, naarVorm) {
+    return leesSupabase(tabel, queryString)
+      .then(function (rijen) {
+        if (!rijen || rijen.length === 0) {
+          throw new Error('Geen rijen in ' + tabel);
+        }
+        return rijen.map(naarVorm);
+      })
+      .catch(function () {
+        return laadJson(pad);
+      });
+  }
+
+  function naarProduct(r) {
+    var d = r.details || {};
+    return Object.assign({}, r, {
+      eigenschappen: d.eigenschappen || [],
+      voordelen: d.voordelen || [],
+      nadelen: d.nadelen || []
+    });
+  }
+
+  function naarArtikel(a) {
+    return Object.assign({}, a, {
+      inhoud: (a.inhoud || '').split(/\n\n+/).filter(Boolean)
+    });
+  }
+
   /* ---------- Header en footer ---------- */
 
   function headerHTML() {
@@ -496,20 +545,26 @@
     var pagina = document.body.getAttribute('data-pagina');
     var laden = null;
 
+    var producten = function () {
+      return laadData('producten', '&gepubliceerd=eq.true&order=naam', 'data/producten.json', naarProduct);
+    };
+    var artikelen = function () {
+      return laadData('artikelen', '&order=datum.desc', 'data/artikelen.json', naarArtikel);
+    };
+
     if (pagina === 'home') {
-      laden = Promise.all([
-        laadJson('data/producten.json'),
-        laadJson('data/artikelen.json')
-      ]).then(function (resultaat) {
+      laden = Promise.all([producten(), artikelen()]).then(function (resultaat) {
         initHome(resultaat[0], resultaat[1]);
       });
     } else if (pagina === 'vergelijkingen') {
-      laden = laadJson('data/producten.json').then(initVergelijkingen);
+      laden = producten().then(initVergelijkingen);
     } else if (pagina === 'artikelen') {
-      laden = laadJson('data/artikelen.json').then(initArtikelen);
+      laden = artikelen().then(initArtikelen);
     } else if (pagina === 'kampeerplekken') {
       laden = Promise.all([
-        laadJson('data/kampeerplekken.json'),
+        laadData('kampeerplekken', '&order=naam', 'data/kampeerplekken.json', function (k) {
+          return Object.assign({}, k, { voorzieningen: k.voorzieningen || [] });
+        }),
         laadJson('data/campings-osm.json').then(function (osm) {
           return osm.campings || [];
         }).catch(function () { return []; })
